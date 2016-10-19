@@ -1,0 +1,67 @@
+import java.util.*;
+
+public class popSequence{
+    public static final int Max=1000;
+    public boolean judgeSeq(int[] arr,int[] arrpush,int M){
+        int len=arr.length;
+        int top=0;
+        int i=0,index=0;
+        Stack<Integer> s1=new Stack<Integer>();
+            while(index<len&&i<len){
+               if(s1.empty()&&top<=M){
+                   s1.push(arrpush[i]);
+                   top++;
+               }
+               if(arr[index]==s1.peek()){
+                   s1.pop();
+                   top--;
+                   index++;
+               }else{
+                   if(top<=M){
+                    s1.push(arrpush[i]);
+                    top++;
+                    i++;
+                   }else{
+                       return false;
+                   }
+               }
+            }
+            if(index<len)//not pop finish
+                return false;
+            else
+                return true;
+    }
+
+    public static void main(String[] args){
+        int i=0;
+        popSequence PS=new popSequence();
+        Scanner s=new Scanner(System.in);
+        int M=s.nextInt();//maxium capacity of the stack
+        int N=s.nextInt();//length of push sequence
+        int K=s.nextInt();//the number of pop sequence
+        if(M<0||N<0||K<0||M>1000||N>1000||K>1000)
+        {
+            //System.out.println("Input Error");
+            System.out.println("NO");
+            return;
+        }
+        int[][] popArr=new int[K][N];
+        int[] pushArr=new int[N];
+        int[] testArr={1,2,3,4,5,6,7};
+        while(i<K){
+            //Actually,it is not needed to use getLine.
+            for(int j=0;j<N;j++)
+            popArr[i][j]=s.nextInt();
+            pushArr[i]=i;
+            i++;
+        }
+        int count=0;
+        //while(count<K){
+            boolean result;
+            result=PS.judgeSeq(testArr,pushArr,M);
+            System.out.println(result);
+            count++;
+        //}
+    }
+}
+
