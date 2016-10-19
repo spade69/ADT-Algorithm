@@ -1,2 +1,2 @@
 # ADT-Algorithm
-DataStructrue and Algorithm, mainly implementation in Java
+DataStructrue and Algorithm, mainly implemented in Java
