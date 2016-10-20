@@ -53,6 +53,7 @@ int DeleteMax(MaxHeap H){
         cout<<"最大堆已空"<<endl;
         return -1;
    }
+   ///这里其实可以抽象出 perdown 操作
    MaxItem=H->Ele[1];//取出根节点
    temp=H->Ele[H->Size--];//用最大堆中最后一个元素从根节点开始向下过滤
    //如果Parent*2超出了范围，就表示没有左儿子
